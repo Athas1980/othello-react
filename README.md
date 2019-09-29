@@ -11,7 +11,7 @@ in any 2 player components at the moment but If I did then I would like to try t
 
 Okay to start with I've chosen to use typescript for this implementation. For something like this game which is well understood I think its better to create all the necessary classes for the game first. I will also be putting the grid unfilled to display early.  This isn't the final display but as I'm unsure of the best CSS properties this seems like the way to go.
 
-## Creating the initial board.
+## Part-1 Creating the initial board.
 The initial board was created just in html just within the app component. 
 
 Initial html looks like..
@@ -74,6 +74,8 @@ I could have specified `.piece` and `.white` and `.black` seperately and I may d
 *Future enhancements*
 * Use svg for pieces.
 * Fix wierd resizing.
+
+The version with just the html is at b67dca0
 
 ----------------
 

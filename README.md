@@ -70,7 +70,7 @@ There are some more style rules associated with the board but the most important
 I could have specified `.piece` and `.white` and `.black` seperately and I may do this at a later point however for the moment it gives me an output that I'm pleased with its good enough for the moment. 
 
 ![](initial-board.gif)
-see [initial_board](https://github.com/Athas1980/othello-react/tree/initial_board) For the code at this point.
+see [initial_board](https://github.com/Athas1980/othello-react/tree/initial_board) For the code at this point. 
 
 *Future enhancements*
 * Use svg for pieces.

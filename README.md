@@ -75,7 +75,7 @@ I could have specified `.piece` and `.white` and `.black` seperately and I may d
 * Use svg for pieces.
 * Fix wierd resizing.
 
-The version with just the html is at b67dca0
+The version with just the html is at #b67dca0
 
 ----------------
 

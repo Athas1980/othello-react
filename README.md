@@ -7,15 +7,22 @@ nor have I been doing web development, so its good to play with a few things.
 
 Initally the scope of this will be just to create a simple project that
 allows a single person to play agains themselves. I'm not intending to add
-in any 2 player components at the moment but If I did then I would like to try to use something like creating a peer to peer connection. 
+in any 2 player components at the moment but If I did then I would like to try
+to use something like creating a peer to peer connection.
 
-Okay to start with I've chosen to use typescript for this implementation. For something like this game which is well understood I think its better to create all the necessary classes for the game first. I will also be putting the grid unfilled to display early.  This isn't the final display but as I'm unsure of the best CSS properties this seems like the way to go.
+Okay to start with I've chosen to use typescript for this implementation. For
+something like this game which is well understood I think its better to create
+all the necessary classes for the game first. I will also be putting the grid
+unfilled to display early. This isn't the final display but as I'm unsure of the
+best CSS properties this seems like the way to go.
 
 ## Part-1 Creating the initial board.
-The initial board was created just in html just within the app component. 
+
+The initial board was created just in html just within the app component.
 
 Initial html looks like..
-```html
+
+``` html
 <div className="game-board">
     <div className="game-square">1</div>
     <div className="game-square">2</div>
@@ -23,65 +30,96 @@ Initial html looks like..
     ...
     ...
     <div className="game-square">27</div>
-    <div className="game-square"><div className="white-piece"></div></div>
-    <div className="game-square"><div className="black-piece"></div></div>
+    <div className="game-square">
+        <div className="white-piece"></div>
+    </div>
+    <div className="game-square">
+        <div className="black-piece"></div>
+    </div>
     <div className="game-square">30</div>
     ...
     ...
 </div>
 ```
 
-It has been layed out using a flex alignment where each item is 12.5% total width.
+It has been layed out using a flex alignment where each item is 12.5% total
+width.
 
 The pieces were created just using a border-radius of 100%
 
-```css
+``` css
 .game-board {
-  display: flex;
-  /* height and width calculations ommited*/
-  box-sizing: border-box;
-  flex-wrap: wrap; /*Allows the cells to wrap correctly*/
-  align-content: center; /*Removes vertical gap in flex*/
+    display: flex;
+    /* height and width calculations ommited*/
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    /*Allows the cells to wrap correctly*/
+    align-content: center;
+    /*Removes vertical gap in flex*/
 }
 
 .game-board .game-square {
-  width: 12.5%;
-  height: 12.5%;
-  /* borders and colours ommited*/
+    width: 12.5%;
+    height: 12.5%;
+    /* borders and colours ommited*/
 }
 
 .white-piece {
-  width:90%;
-  height:90%;
-  background-color:rgb(231, 226, 204);
-  border-radius: 100%;
+    width: 90%;
+    height: 90%;
+    background-color: rgb(231, 226, 204);
+    border-radius: 100%;
 }
 
 .black-piece {
-  width:90%;
-  height:90%;
-  background-color:rgb(15, 13, 3);
-  border-radius: 100%;
+    width: 90%;
+    height: 90%;
+    background-color: rgb(15, 13, 3);
+    border-radius: 100%;
 }
 ```
 
-There are some more style rules associated with the board but the most important ones are here.
+There are some more style rules associated with the board but the most important
+ones are here.
 
-I could have specified `.piece` and `.white` and `.black` seperately and I may do this at a later point however for the moment it gives me an output that I'm pleased with its good enough for the moment. 
+I could have specified `.piece` and `.white` and `.black` seperately and I may
+do this at a later point however for the moment it gives me an output that I'm
+pleased with its good enough for the moment.
 
 ![](initial-board.gif)
-see [initial_board](https://github.com/Athas1980/othello-react/tree/initial_board) For the code at this point. 
 
 *Future enhancements*
+
 * Use svg for pieces.
 * Fix wierd resizing.
 
-The version with just the html is at #b67dca0
+see :
+[initial_board](https://github.com/Athas1980/othello-react/tree/initial_board)
+For the code at this point.
+
+## Adding in a Model for the game.
+
+The state of the game is as follows.
+
+For every square on the board it can be in one of three states. EMPTY, WHITE,
+BLACK. I strongly dislike the way null was treated as a state for the
+tic-tac-toe example so I won't be using null for the square contents.
+
+There is also a next player parameter. As the game usually goes black/white,
+black/white it would be easy to say if its an odd turn then its blacks go else
+its whites go. However this can be a bit misleading as sometimes a player won't
+be able to place a piece. Instead its the other players turn again.
+
+So keep a property of next player.
+
+On a related note its a good idea to keep a property for available moves.
+
+`npm install --save typescript @types/node @types/react @types/react-dom @types/jest`
 
 ----------------
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with 
+[Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -98,7 +136,9 @@ You will also see any lint errors in the console.
 ### `npm test` 
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See the section about
+[running tests](https://facebook.github.io/create-react-app/docs/running-tests)
+for more information.
 
 ### `npm run build` 
 
@@ -108,4 +148,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+See the section about
+[deployment](https://facebook.github.io/create-react-app/docs/deployment) for
+more information.
+
